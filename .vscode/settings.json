@@ -1,0 +1,54 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
+  "editor.tabSize": 2,
+  "eslint.codeAction.disableRuleComment": {
+    "enable": true,
+    "location": "separateLine"
+  },
+  "eslint.enable": true,
+  "files.exclude": {
+    "**/*.js": {
+      "when": "$(basename).ts"
+    },
+    "**/*.js.map": true,
+    "**/*.vscode": false,
+    "**/.DS_Store": true,
+    "**/.git/": true,
+    "**/.idea/": true,
+    "**/node_modules/": true
+  },
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "javascript.preferences.quoteStyle": "single",
+  "tslint.enable": false,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "workbench.colorCustomizations": {
+    "editorGroup.border": "#bcf6b1",
+    "panel.border": "#bcf6b1",
+    "sideBar.border": "#bcf6b1",
+    "tab.activeBorder": "#bcf6b1",
+    "titleBar.activeBackground": "#95f183",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveBackground": "#95f18399",
+    "titleBar.inactiveForeground": "#15202b99",
+    "statusBar.background": "#95f183",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#6eec55",
+    "activityBar.activeBackground": "#bcf6b1",
+    "activityBar.activeBorder": "#8d9df2",
+    "activityBar.background": "#bcf6b1",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#8d9df2",
+    "activityBarBadge.foreground": "#15202b"
+  },
+  "peacock.color": "#95f183",
+  "peacock.affectAccentBorders": true,
+  "peacock.affectTabActiveBorder": true,
+  "peacock.affectActivityBar": true
+}
