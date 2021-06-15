@@ -1,4 +1,4 @@
-import { Cache, Entry, EntryFactory } from './types';
+import { Cache, Entry, EntryFactory } from '../types';
 
 // TODO: load before expires
 // TODO: retries

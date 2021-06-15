@@ -1,6 +1,8 @@
 import { given, When } from '@geeebe/jest-bdd';
+import { Cache, Entry } from '../types';
 import { CacheImpl } from './cache';
-import { Cache, Entry } from './types';
+
+const RESULT = Math.random();
 
 interface Given {
   cache: Cache<number>;
@@ -22,9 +24,9 @@ const resolveTests = (when: When<Given>, then: jest.It) => {
       expect(factory).toHaveBeenCalled();
     });
 
-    then('the returned value will be 12', async () => {
+    then('the returned value will be correct', async () => {
       const value = await item;
-      expect(value).toBe(12);
+      expect(value).toBe(RESULT);
     });
   });
 
@@ -57,13 +59,13 @@ const rejectTests = (when: When<Given>, then: jest.It) => {
 };
 
 given('an empty cache', () => {
-  const factory = jest.fn(() => Promise.resolve({ expires: new Date(Date.now() + 1_000_000), value: 12 }));
+  const factory = jest.fn(() => Promise.resolve({ expires: new Date(Date.now() + 1_000_000), value: RESULT }));
   const cache = new CacheImpl<number>(factory);
   return { cache, factory };
 }, resolveTests);
 
 given('an empty cache AND factory returns expired items', () => {
-  const factory = jest.fn(() => Promise.resolve<Entry<number>>({ expires: new Date(Date.now() - 1_000_000), value: 12 }));
+  const factory = jest.fn(() => Promise.resolve<Entry<number>>({ expires: new Date(Date.now() - 1_000_000), value: RESULT }));
   const cache = new CacheImpl<number>(factory);
   return { cache, factory };
 }, (when, then) => {
@@ -80,7 +82,7 @@ given('an empty cache AND factory returns expired items', () => {
 given('an empty cache AND factory delayed result', () => {
   const factory = jest.fn(async () => {
     await sleep(2000);
-    return Promise.resolve<Entry<number>>({ expires: new Date(Date.now() + 1_000_000), value: 12 });
+    return Promise.resolve<Entry<number>>({ expires: new Date(Date.now() + 1_000_000), value: RESULT });
   });
   const cache = new CacheImpl<number>(factory);
   return { cache, factory };
