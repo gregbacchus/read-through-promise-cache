@@ -18,6 +18,10 @@ export class CacheImpl<T> implements Cache<T> {
     return this.loading ?? this.refresh();
   }
 
+  public invalidate = (): void => {
+    this.loaded = undefined;
+  }
+
   private refresh = (): Promise<T> => {
     this.loading = new Promise<T>((resolve, reject) => {
       this.factory()
